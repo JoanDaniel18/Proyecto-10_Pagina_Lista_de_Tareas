@@ -1,0 +1,30 @@
+document.querySelector(".click").onclick = function(){
+    if(document.querySelector(".newitem input").value.length == 0){
+        alert('Por favor escribe algo...')
+    }else{
+        document.querySelector("#tag").innerHTML += `
+        <div class= "list">
+            <span id="listname">
+                ${document.querySelector(".newitem input").value}
+            </span>
+            <button class="delete">
+                <i class='bx bx-message-square-x'></i>
+            </button>
+        </div>
+        `;
+        var current_list = document.querySelectorAll(".delete");
+        for(var i=0; i<current_list.length;i++){
+            current_list[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+        
+        var list = document.querySelector(".list");
+        for(var i=0; i<list.lenght;i++){
+            list[i].onclick = function(){
+                this.classlist.toggle("comple")
+            }
+        }
+        document.querySelector(".newitem input").value = "";
+    }
+}
